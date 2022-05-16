@@ -26,6 +26,9 @@
   height: 314px;
   border-radius: 8px;
   box-shadow: 0px 0px 4px 4px;  
+
+  font-family: 'Montserrat';
+  font-style: normal;
 }
 
 /* Contenido del popup */
