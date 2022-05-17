@@ -1,8 +1,8 @@
 <template>
   <div class="dialog" v-if="dialogInfo.visible">
     <!-- BTN CLOSE -->
-    <div class="close">
-      <i class="fa-solid fa-xmark"></i>
+    <div class="close" @click="closeDialog(dialogInfo.name, this)">
+      <i class="fa-solid fa-xmark" ></i>
     </div>
     <!-- Contenido del popup -->
     <div class="popUpContent">
@@ -16,7 +16,7 @@
         <p>{{dialogInfo.text}}</p>
       </div>
 
-      <div v-html="dialogInfo.buttons"></div>
+      <div class="btns" @click="closeDialog(dialogInfo.name)" v-html="dialogInfo.buttons"></div>
       
     </div>
   </div>
@@ -31,6 +31,11 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods:{
+    closeDialog(type){      
+      this.$emit('close', type);
+    },
   }
 }
 </script>
@@ -47,6 +52,9 @@ export default {
 
   font-family: "Montserrat";
   font-style: normal;
+
+  padding-bottom: 1em;
+
 }
 
 /* Contenido del popup */
@@ -89,15 +97,9 @@ export default {
   right: 0px;
   top: 0px;
   border-radius: 100%;
-
-  /* Colors / Star */
-  /*background: rgba(255, 217, 18, 0.12);*/
-
 }
 
 .icono {
-  /* 56px / Attention */
-  /*color: #FFD912;*/
   font-size: 2em;
 }
 
